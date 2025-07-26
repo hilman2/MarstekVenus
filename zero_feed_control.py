@@ -51,6 +51,7 @@ class ZeroFeedController:
         self.current_total_power = 0.0
         self.last_grid_power = 0.0
         self.mode_change_count = 0
+        self.enabled = True  # Flag für Setup-Modus
         
         # Trägheit für sanfte Regelung
         self.max_power_change_rate = 750  # Maximale Änderung pro Zyklus in Watt
@@ -67,6 +68,10 @@ class ZeroFeedController:
 
     def execute_control_cycle(self) -> Tuple[bool, str]:
         """Führt einen kompletten Regelzyklus aus"""
+        # Prüfe ob Controller aktiviert ist
+        if not self.enabled:
+            return True, "Controller deaktiviert (Setup-Modus)"
+        
         try:
             grid_power = self.energy_meter.get_current_power_direct()
             if grid_power is None:
@@ -394,7 +399,8 @@ class ZeroFeedController:
             'low_soc_protection': {
                 'threshold': self.low_soc_threshold,
                 'min_surplus': self.low_soc_min_surplus
-            }
+            },
+            'enabled': self.enabled
         }
     
     def reset_statistics(self):

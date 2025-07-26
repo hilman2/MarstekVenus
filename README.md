@@ -11,6 +11,7 @@ Ein intelligentes Energiemanagement-System zur Nulleinspeisung (Zero-Feed) für 
 - **Flexible Energiemessung**: Unterstützung für Shelly 3EM Pro und EcoTracker
 - **Modbus-TCP Kommunikation**: Direkte Steuerung der Marstek/Duravolt Akkus
 - **Durchschnittsbildung**: Stabilere Regelung durch 3-Werte-Durchschnitt der Energiemessungen
+- **Modbus ID Setup**: Web-basierte Konfiguration neuer Akkus mit automatischer ID-Vergabe
 
 ## 📋 Systemanforderungen
 
@@ -232,6 +233,43 @@ Das Dashboard zeigt:
 - Akku-Status (SoC, Leistung, Modus)
 - Systemstatus und Fehler
 - Live-Log der letzten Ereignisse
+
+### Modbus ID Setup
+
+Neue Akkus können über die Setup-Seite konfiguriert werden:
+
+1. **Setup-Seite öffnen**: Klicken Sie auf den "Setup" Button im Dashboard oder navigieren Sie zu http://<server-ip>:8080/setup
+   - **⚠️ WICHTIG**: Die Akku-Steuerung wird automatisch gestoppt beim Betreten des Setup-Modus
+   - Das Dashboard zeigt "Steuerung deaktiviert (Setup-Modus)" an
+
+2. **Vorhandene Geräte scannen**: 
+   - Klicken Sie auf "Geräte scannen"
+   - Das System prüft die IDs 1-10 und zeigt gefundene Geräte an
+   - Automatisch wird die nächste freie ID vorgeschlagen
+
+3. **Neue ID vergeben**:
+   - **WICHTIG**: Es darf nur EIN neuer Akku mit ID 1 angeschlossen sein!
+   - Trennen Sie alle anderen neuen Akkus vor dem Setzen der ID
+   - Wählen Sie die neue ID (1-255)
+   - Klicken Sie auf "ID 1 → neue ID setzen"
+   - Bestätigen Sie die Sicherheitsabfrage
+
+4. **Setup-Modus beenden**:
+   - Klicken Sie auf "🏁 Setup-Modus beenden und Steuerung fortsetzen"
+   - Oder nutzen Sie den "Zurück zum Dashboard" Link
+   - Die Akku-Steuerung wird automatisch wieder aktiviert
+
+5. **Konfiguration aktualisieren**:
+   - Nach erfolgreichem Setzen der ID muss die neue ID in der `config.json` unter `battery.akku_ids` eingetragen werden
+   - Starten Sie das System neu, damit die Änderungen wirksam werden
+
+**Sicherheitsfunktionen**:
+- Die Akku-Steuerung wird automatisch gestoppt beim Betreten des Setup-Modus
+- Eine Warnung wird angezeigt, dass die Steuerung deaktiviert ist
+- Beim Verlassen der Seite erfolgt eine Sicherheitsabfrage
+- Die Steuerung kann jederzeit wieder aktiviert werden
+
+**Hintergrund**: Alle Marstek/Duravolt Akkus werden vom Hersteller mit der Modbus Slave ID 1 ausgeliefert. Um mehrere Akkus gleichzeitig zu betreiben, muss jeder Akku eine eindeutige ID erhalten.
 
 ### Systemd-Befehle (Linux)
 
