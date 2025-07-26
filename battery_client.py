@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Modbus-Akku-Client für Marstek PV-Akku Steuerung (DURAVOLT - KEINE FALLBACKS)
+Modbus-Akku-Client für Marstek PV-Akku Steuerung
 Strikt: Keine Default-Werte oder Fallbacks im Code!
 """
 
@@ -12,7 +12,7 @@ from pymodbus.exceptions import ModbusException
 
 logger = logging.getLogger(__name__)
 
-# DURAVOLT MODBUS REGISTER (exakt aus dem alten System)
+# MODBUS REGISTER
 REG_485_CONTROL = 42000      # RS485 Kontrolle
 REG_MANUAL_MODE = 43000      # Manueller Modus  
 REG_CHARGE_MODE = 42010      # Lademodus
@@ -24,7 +24,7 @@ REG_TEMPERATURE_1 = 35001    # Temperatur 1
 REG_TEMPERATURE_2 = 35002    # Temperatur 2
 
 class BatteryClient:
-    """Client für einen einzelnen Duravolt Akku - OHNE FALLBACK-WERTE"""
+    """Client für einen einzelnen Akku - OHNE FALLBACK-WERTE"""
     
     def __init__(self, ip: str, port: int, slave_id: int, timeout: int = 3):
         self.ip = ip
@@ -64,7 +64,7 @@ class BatteryClient:
     
     def read_soc(self) -> Optional[float]:
         """
-        Liest SoC vom Duravolt Akku - OHNE Fallback-Werte
+        Liest SoC vom Akku - OHNE Fallback-Werte
         """
         client = self._create_connection()
         if not client:
