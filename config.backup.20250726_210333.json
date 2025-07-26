@@ -14,7 +14,7 @@
     "max_failures_before_stop": 2
   },
   "battery": {
-    "ip": "192.168.33.210",
+    "ip": "192.168.33.211",
     "port": 502,
     "akku_ids": [
       2

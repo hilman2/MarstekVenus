@@ -1,0 +1,228 @@
+/* Dashboard-spezifische Styles - Base CSS wird importiert */
+
+body {
+    padding: var(--spacing-md);
+}
+
+.main-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.header h1 {
+    font-size: 1.75rem;
+    margin: 0;
+    font-weight: 400;
+}
+
+/* Kompakte Metrics-Grid */
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.metric-card {
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-md);
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    transition: all 0.2s ease;
+}
+
+.metric-card:hover {
+    box-shadow: var(--shadow-card);
+}
+
+.metric-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.metric-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.metric-title {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+}
+
+.metric-value {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.unit {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin-left: 0.25rem;
+    font-weight: 400;
+}
+
+/* Akku-Details kompakter */
+.battery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-md);
+}
+
+.battery-card {
+    background: var(--bg-secondary);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-sm);
+    border: 1px solid var(--border-color);
+}
+
+.battery-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-xs);
+}
+
+.battery-name {
+    font-weight: 500;
+    font-size: 0.875rem;
+}
+
+.battery-soc {
+    font-size: 1rem;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.battery-power {
+    font-size: 0.875rem;
+    margin: 0.25rem 0;
+    color: var(--text-secondary);
+}
+
+/* Kompakte Log-Sektion */
+.log-card {
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+}
+
+.log-header {
+    padding: var(--spacing-md);
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.log-header h3 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.log-count {
+    background: var(--primary-color);
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.log-container {
+    height: 200px;
+    overflow-y: auto;
+    padding: var(--spacing-sm);
+    font-family: 'Consolas', monospace;
+    font-size: 0.75rem;
+}
+
+.log-entry {
+    margin-bottom: 0.25rem;
+    display: flex;
+    gap: var(--spacing-sm);
+    padding: 0.25rem 0;
+}
+
+.log-time {
+    color: var(--text-disabled);
+    min-width: 50px;
+    font-size: 0.6875rem;
+}
+
+.log-level {
+    min-width: 45px;
+    font-weight: 600;
+    font-size: 0.6875rem;
+}
+
+.log-info { color: var(--info-color); }
+.log-warning { color: var(--warning-color); }
+.log-error { color: var(--error-color); }
+
+.log-message {
+    flex: 1;
+    word-break: break-word;
+}
+
+.footer {
+    text-align: center;
+    margin-top: var(--spacing-lg);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+}
+
+/* Responsive Anpassungen */
+@media (max-width: 768px) {
+    body {
+        padding: var(--spacing-sm);
+    }
+    
+    .header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .metrics-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-sm);
+    }
+    
+    .metric-card {
+        padding: var(--spacing-sm);
+    }
+    
+    .metric-value {
+        font-size: 1.125rem;
+    }
+}
+
+/* Status-Indikator Anpassungen */
+.status-indicator {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.status-indicator .status-dot {
+    width: 8px;
+    height: 8px;
+}

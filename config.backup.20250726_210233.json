@@ -19,7 +19,7 @@
     "akku_ids": [
       2
     ],
-    "max_power_per_battery": 2500,
+    "max_power_per_battery": 2400,
     "min_power_per_battery": 50,
     "min_soc_for_discharge": 11,
     "max_soc_for_charge": 98

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marstek PV-Akku Steuerung</title>
+    <link rel="stylesheet" href="/static/css/base.css">
+    <link rel="stylesheet" href="/static/css/dashboard.css">
+</head>
+<body>
+    <div class="main-container">
+        <div class="header">
+            <h1>🔋 Marstek PV-Akku Steuerung</h1>
+        </div>
+        
+        <div class="nav-links">
+            <a href="/setup" class="nav-link">
+                🆔 Modbus Setup
+            </a>
+            <a href="/config" class="nav-link">
+                ⚙️ Konfiguration
+            </a>
+        </div>
+        
+        <div class="metrics-grid">
+            <!-- Systeminformationen -->
+            <div class="metric-card">
+                <div class="metric-icon">📊</div>
+                <div class="metric-content">
+                    <div class="metric-title">System</div>
+                    <div class="metric-value" id="systemStatus">-</div>
+                </div>
+            </div>
+            
+            <!-- Netzleistung -->
+            <div class="metric-card">
+                <div class="metric-icon">⚡</div>
+                <div class="metric-content">
+                    <div class="metric-title">Netz</div>
+                    <div class="metric-value" id="gridPower">-<span class="unit">W</span></div>
+                </div>
+            </div>
+            
+            <!-- Akku-Gesamtleistung -->
+            <div class="metric-card">
+                <div class="metric-icon">🔋</div>
+                <div class="metric-content">
+                    <div class="metric-title">Akku</div>
+                    <div class="metric-value" id="batteryPower">-<span class="unit">W</span></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Akku-Details -->
+        <div class="card" style="margin-top: 1.5rem;">
+            <div class="card-title">
+                🔋 Akku-Details
+            </div>
+            <div class="battery-grid" id="batteryGrid">
+                <!-- Dynamisch gefüllt -->
+            </div>
+        </div>
+        
+        <!-- Logs -->
+        <div class="log-card">
+            <div class="log-header">
+                <h3>📋 Logs</h3>
+                <span class="log-count" id="logCount">0</span>
+            </div>
+            <div class="log-container" id="logContainer">
+                <!-- Dynamisch gefüllt -->
+            </div>
+        </div>
+        
+        <div class="footer">
+            © 2025 Marstek PV-Akku Steuerung - Automatische Aktualisierung alle 2 Sekunden
+        </div>
+    </div>
+    
+    <script src="/static/js/dashboard.js"></script>
+</body>
+</html>
