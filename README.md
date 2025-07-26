@@ -1,4 +1,4 @@
-# Marstek PV-Akku Steuerung v3.4
+# Marstek PV-Akku Steuerung
 
 Ein intelligentes Energiemanagement-System zur Nulleinspeisung (Zero-Feed) für PV-Anlagen mit Marstek/Duravolt Batteriespeichern.
 
